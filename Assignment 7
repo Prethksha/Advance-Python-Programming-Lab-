@@ -1,0 +1,25 @@
+##Write a program using regular expressions(regex) to find email patterns.
+
+import re
+
+def find_emails(text):
+    # Standard practical regex pattern for matching email addresses
+    email_pattern = r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+'
+    
+    # re.findall returns a list of all matches found in the text
+    emails = re.findall(email_pattern, text)
+    return emails
+
+# Sample text containing various emails and some noise
+sample_text = """
+Hello team, please reach out to support@example.com or admin.test@sub.domain.co.uk 
+for any inquiries. You can also contact john_doe123+tag@gmail.com. 
+Note that invalid emails like user@.com or missing-at-sign.com should be ignored.
+"""
+
+# Find the emails
+found_emails = find_emails(sample_text)
+
+print("Extracted Emails:")
+for email in found_emails:
+    print(f"- {email}")
